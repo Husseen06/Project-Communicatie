@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['login'])) {
         // Succesvol ingelogd
         session_start();
         $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['gebruikersnaam'];
         header("Location: ../views/home.php");
         exit;
     } else {

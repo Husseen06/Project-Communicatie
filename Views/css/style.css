@@ -1,0 +1,144 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E3F2FD; /* Lichtblauw */
+}
+
+/* Header */
+header {
+    background-color: #42A5F5; /* Lichtblauw */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+header em {
+    font-style: normal;
+    font-size: 1rem;
+}
+
+.icons {
+    margin-top: 10px;
+}
+
+.icons button {
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    background-color: #1565C0; /* Donkerblauw */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.icons button:hover {
+    background-color: #1E88E5; /* Hover Donkerblauw */
+}
+
+/* Main section */
+main {
+    padding: 20px;
+}
+
+/* Producten Section */
+.producten {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product .image img {
+    width: 100%;
+    height: auto;
+}
+
+.product p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.product button {
+    padding: 10px 20px;
+    background-color: #42A5F5; /* Lichtblauw */
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.product button:hover {
+    background-color: #1E88E5; /* Hover Donkerblauw */
+}
+
+/* Footer */
+footer {
+    background-color: #42A5F5; /* Lichtblauw */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer em {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.socials {
+    margin-top: 10px;
+}
+
+.social {
+    color: white;
+    font-size: 2rem;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social:hover {
+    color: #1E88E5; /* Hover Donkerblauw */
+}
+
+/* Media Queries for smaller screens */
+@media only screen and (max-width: 768px) {
+    .producten {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 80%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .icons button {
+        font-size: 1.2rem;
+    }
+}

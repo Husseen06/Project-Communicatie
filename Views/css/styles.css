@@ -3,65 +3,196 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #E3F2FD; /* Lichtblauw */
 }
 
 nav {
-    background-color: #333;
+    background-color: #42A5F5; /* Lichtblauw */
     color: white;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
+    font-weight: 600;
 }
 
 .auth-button {
     margin-left: auto;
-}
-
-section {
-    padding: 20px;
-    margin: 20px;
-}
-
-h1, h2 {
-    font-size: 2rem;
-}
-
-.btn {
-    background-color: #f1c40f;
+    background-color: #1565C0; /* Donkerblauw */
     padding: 10px 20px;
-    text-decoration: none;
-    color: white;
     border-radius: 5px;
+    color: white;
+    font-weight: 600;
 }
 
-.food-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
+#hero {
+    background-color: #BBDEFB; /* Lichtblauw */
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
 }
 
-.cart-items {
-    margin: 10px 0;
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 
-/* Form Styles */
-form input, form select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
 }
 
-form button {
-    background-color: #f1c40f;
-    padding: 10px;
+.hero-img {
+    width: 80%;
+    max-width: 500px;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+.order-button {
+    background-color: #42A5F5;
     color: white;
     border: none;
-    border-radius: 5px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+.order-button:hover {
+    background-color: #1E88E5;
+}
+
+#how-it-works {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #42A5F5; /* Lichtblauw */
+    color: white;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.step {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.step i {
+    font-size: 3rem;
+    color: #1565C0; /* Donkerblauw */
+    margin-bottom: 10px;
+}
+
+.step h3 {
+    color: #1565C0;
+}
+
+#benefits {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #71c2ff; /* Geel */
+    color: #333;
+}
+
+#our-promise {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #E3F2FD; /* Lichtblauw */
+    color: #333;
+}
+
+footer {
+    background-color: #42A5F5; /* Lichtblauw */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.follow-us p {
+    font-size: 1.5rem;
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-icon {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.5rem;
+}
+
+/* Media Queries voor kleinere schermen */
+@media only screen and (max-width: 600px) {
+    .steps {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step {
+        width: 80%;
+        margin: 20px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+}
+
+/* From Uiverse.io by faxriddin20 */
+.button-container {
+  display: flex;
+  background-color: none;
+  width: 250px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+}
+
+.button {
+  outline: 0 !important;
+  border: 0 !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.icon {
+  font-size: 20px;
 }
