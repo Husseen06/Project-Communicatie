@@ -9,7 +9,7 @@ body {
 /* Header */
 header {
     background-color: #42A5F5; /* Lichtblauw */
-    color: white;
+    color: #ffffff;
     padding: 20px;
     text-align: center;
 }
@@ -69,10 +69,17 @@ main {
     transform: scale(1.05);
 }
 
-.product .image img {
-    width: 100%;
-    height: auto;
+.product .image {
+    height: 200px;
+    overflow: hidden;
 }
+
+.product .image img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 .product p {
     margin: 10px 0;

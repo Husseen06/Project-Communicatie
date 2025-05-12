@@ -4,7 +4,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['user_id'])) {
         // User not logged in, redirect to login page
-        header('Location: ../Views/login.php');
+header('Location: ../Views/login.php?alert=login_required');
         exit();
     }
 

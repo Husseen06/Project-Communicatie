@@ -6,10 +6,25 @@ $products = [
     ['id' => 1, 'name' => 'Pizza Margherita', 'image' => '../Afbeeldingen/pizzavb.jpg', 'price' => 8.99],
     ['id' => 2, 'name' => 'Sushi Set', 'image' => '../Afbeeldingen/sushivb.png', 'price' => 12.99],
     ['id' => 3, 'name' => 'Patat met', 'image' => '../Afbeeldingen/patatvb.png', 'price' => 4.99],
+    ['id' => 4, 'name' => 'Caesar Salad', 'image' => '../Afbeeldingen/ceasarvb.jpg', 'price' => 6.99],
+    ['id' => 5, 'name' => 'Burger', 'image' => '../Afbeeldingen/burger.jpg', 'price' => 9.99],
+    ['id' => 6, 'name' => 'Pasta Carbonara', 'image' => '../Afbeeldingen/pasta.jpg', 'price' => 10.99],
+    ['id' => 7, 'name' => 'Tacos', 'image' => '../Afbeeldingen/tacos.jpg', 'price' => 7.99],
+    ['id' => 8, 'name' => 'Ice Cream', 'image' => '../Afbeeldingen/ice.jpg', 'price' => 3.99],
+    ['id' => 9, 'name' => 'Coffee', 'image' => '../Afbeeldingen/coffee.jpg', 'price' => 2.49],
+    ['id' => 10, 'name' => 'Lemonade', 'image' => '../Afbeeldingen/lemonade.jpg', 'price' => 2.99],
+    ['id' => 11, 'name' => 'Veggie Burger', 'image' => '../Afbeeldingen/veggieburger.jpg', 'price' => 7.99],
+    ['id' => 12, 'name' => 'Fruit Salad', 'image' => '../Afbeeldingen/fruitsalad.jpg', 'price' => 5.99],
 ];
 
 // Handle add to cart
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
+    if (!isset($_SESSION['user_id'])) {
+        $_SESSION['alert'] = 'Je moet inloggen om een item aan je winkelwagen toe te voegen.';
+        ;
+        exit();
+    }
+
     $productId = intval($_POST['product_id']);
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
@@ -19,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     } else {
         $_SESSION['cart'][$productId] = 1;
     }
+    $_SESSION['alert'] = 'Item toegevoegd aan winkelwagen: ' . htmlspecialchars($products[$productId - 1]['name']);
     header('Location: index.php');
     exit();
 }
@@ -26,6 +42,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
 // Check if user is logged in
 $isLoggedIn = isset($_SESSION['user_id']);
 ?>
+
+<?php if (isset($_SESSION['alert'])): ?>
+    <script>
+        alert('<?= $_SESSION['alert'] ?>');
+    </script>
+    <?php unset($_SESSION['alert']); ?>
+<?php endif; ?>
+
+<?php if (isset($_GET['alert']) && $_GET['alert'] === 'login_required'): ?>
+    <p style="color: red; text-align: center;">U moet ingelogd zijn om een bestelling te plaatsen.</p>
+<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -67,7 +94,9 @@ $isLoggedIn = isset($_SESSION['user_id']);
       </svg>
     </button>
     </a>
+
     
+<?php if (!$isLoggedIn): ?>
    <a href="login.php"><button class="button">
       <svg
         class="icon"
@@ -85,6 +114,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
       </svg>
     </button>
     </a> 
+<?php endif; ?>
     <a href="wagen.php"> <button class="button">
       <svg
         class="icon"
@@ -110,7 +140,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
   <div class="auth-controls" style="color: white; margin-left: 20px;">
     <?php if ($isLoggedIn): ?>
       <span class="username">Welkom, <?= htmlspecialchars($_SESSION['username'] ?? 'Gebruiker') ?></span>
-      <a href="../logout.php" class="auth-button" style="margin-left: 10px;">Uitloggen</a>
+      <a href="../logout.php" class="auth-button" style="margin-left: 10px;">logout</a>
+      </a>
     <?php else: ?>
       <a href="login.php" class="auth-button" style="margin-left: 10px;">Inloggen</a>
     <?php endif; ?>
@@ -156,7 +187,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
         <?php foreach ($products as $product): ?>
             <div class="product">
                 <div class="image">
-                    <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                    <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="product-image">
                 </div>
                 <p><em><?= htmlspecialchars($product['name']) ?></em></p>
                 <p>€<?= number_format($product['price'], 2) ?></p>
@@ -180,3 +211,6 @@ $isLoggedIn = isset($_SESSION['user_id']);
         <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social"><i class="fab fa-instagram"></i></a>
         <a href="#" class="social"><i class="fab fa-twitter"></i></a>
+</footer>
+</body>
+</html>

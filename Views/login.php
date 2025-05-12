@@ -13,6 +13,10 @@
     <?php if (isset($_GET['error']) && $_GET['error'] === 'invalid_login'): ?>
     <p style="color: red; text-align: center;">Ongeldige gebruikersnaam of wachtwoord.</p>
     <?php endif; ?>
+    
+    <?php if (isset($_GET['alert']) && $_GET['alert'] === 'login_required'): ?>
+    <p style="color: red; text-align: center;">U moet ingelogd zijn om een bestelling te plaatsen.</p>
+    <?php endif; ?>
 
     <form method="POST" action="../controllers/UserController.php" onsubmit="return validatePassword()">
       <div class="txt_field">
